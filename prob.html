@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Probabilidad, Permutaciones y más</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container">
+    <div class="back"><h2><a href="index.html">Volver al inicio</a></h2></div>
+
+    <h1>Matemáticas: Probabilidad</h1>
+
+    <div class="info">
+        <h3>¿Qué es probabilidad?</h3>
+        <p>El término probabilidad se utiliza para definir el cálculo matemático que establece todas las posibilidades que existen de que ocurra un fenómeno en determinadas circunstancias de azar. La probabilidad se calcula con base en un valor entre 0 y 1 y el nivel de certidumbre viene determinado por la cercanía a la unidad; por el contrario, en caso de que se aproxime al cero, hay menos seguridad en el resultado final.</p>
+    </div>
+
+    <div class="info">
+        <h3>¿Cuál es la fórmula para calcular la probabilidad?</h3>
+        <p>Para el cálculo de la probabilidad es necesario dividir el número de sucesos favorables entre el número total de sucesos posibles. Esto genera una muestra y, a partir de los datos obtenidos, se puede realizar el cálculo. El cálculo de probabilidades se expresa en porcentaje y responde a la siguiente fórmula:</p>
+        <p><strong>Probabilidad = Casos favorables / casos posibles x 100.</strong></p>
+    </div>
+
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/PrnSHhbgaRU?si=6wJrJZv4LtvaobW6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <div class="info">
+        <h3>¿En qué situaciones se aplica la probabilidad?</h3>
+        <p>Algunos ejemplos en los que se aplica la probabilidad son:</p>
+        <ol>
+            <li>Análisis estadístico del riesgo empresarial: se pueden estimar caída de precios de acciones, estados de inversiones, etc., a través de fórmulas probabilísticas.</li>
+            <li>Cálculo de seguros: los procesos en los que se estudia la fiabilidad de un asegurado, para saber si es rentable asegurarlo y por cuánto dinero y tiempo conviene hacerlo, son posibles gracias a estrategias y cálculos de probabilidad.</li>
+            <li>Análisis de conducta: en este tipo de aplicación, se hace uso de la probabilidad para evaluar ciertos comportamientos de una muestra de la población, de manera que puedan predecirse ciertos patrones de opinión, comportamientos o pensamientos.</li>
+            <li>Investigación médica: el éxito de vacunas, así como sus efectos secundarios en la población, por ejemplo, viene determinada por cálculos probabilísticos.</li>
+        </ol>
+    </div>
+
+
+    <h1>Calculadora de Probabilidad, Permutaciones y más</h1>
+
+    <h2>Probabilidad</h2>
+    <label for="evento">Número de eventos favorables:</label>
+    <input type="number" id="evento" min="0">
+    <br>
+    <label for="total">Número total de eventos:</label>
+    <input type="number" id="total" min="0">
+    <br>
+    <button onclick="calcularProbabilidad()">Calcular Probabilidad</button>
+    <p id="resultadoProbabilidad"></p>
+
+    <h2>Permutaciones</h2>
+    <label for="nPermutaciones">Número total de elementos (n):</label>
+    <input type="number" id="nPermutaciones" min="0">
+    <br>
+    <label for="rPermutaciones">Número de elementos a permutar (r):</label>
+    <input type="number" id="rPermutaciones" min="0">
+    <br>
+    <button onclick="calcularPermutaciones()">Calcular Permutaciones</button>
+    <p id="resultadoPermutaciones"></p>
+
+    <h2>Media Aritmética</h2>
+    <label for="numerosMedia">Introduce los números separados por comas:</label>
+    <input type="text" id="numerosMedia">
+    <br>
+    <button onclick="calcularMedia()">Calcular Media Aritmética</button>
+    <p id="resultadoMedia"></p>
+
+    <h2>Varianza y Desviación Estándar</h2>
+    <label for="numerosVarianza">Introduce los números separados por comas:</label>
+    <input type="text" id="numerosVarianza">
+    <br>
+    <button onclick="calcularVarianzaDesviacion()">Calcular Varianza y Desviación Estándar</button>
+    <p id="resultadoVarianza"></p>
+    <p id="resultadoDesviacion"></p>
+
+    <h2>Combinaciones</h2>
+    <label for="nCombinaciones">Número total de elementos (n):</label>
+    <input type="number" id="nCombinaciones" min="0">
+    <br>
+    <label for="rCombinaciones">Número de elementos a combinar (r):</label>
+    <input type="number" id="rCombinaciones" min="0">
+    <br>
+    <button onclick="calcularCombinaciones()">Calcular Combinaciones</button>
+    <p id="resultadoCombinaciones"></p>
+</div>
+    <script>
+        function calcularProbabilidad() {
+            const eventosFavorables = parseInt(document.getElementById('evento').value);
+            const eventosTotales = parseInt(document.getElementById('total').value);
+            const probabilidad = eventosFavorables / eventosTotales;
+            document.getElementById('resultadoProbabilidad').innerText = `La probabilidad es: ${probabilidad.toFixed(2)}`;
+        }
+
+        function factorial(n) {
+            if (n === 0 || n === 1) {
+                return 1;
+            } else {
+                return n * factorial(n - 1);
+            }
+        }
+
+        function calcularPermutaciones() {
+            const n = parseInt(document.getElementById('nPermutaciones').value);
+            const r = parseInt(document.getElementById('rPermutaciones').value);
+            const permutaciones = factorial(n) / factorial(n - r);
+            document.getElementById('resultadoPermutaciones').innerText = `El número de permutaciones es: ${permutaciones}`;
+        }
+
+        function calcularMedia() {
+            const numeros = document.getElementById('numerosMedia').value.split(',').map(Number);
+            const media = numeros.reduce((acc, curr) => acc + curr, 0) / numeros.length;
+            document.getElementById('resultadoMedia').innerText = `La media aritmética es: ${media.toFixed(2)}`;
+        }
+
+        function calcularVarianzaDesviacion() {
+            const numeros = document.getElementById('numerosVarianza').value.split(',').map(Number);
+            const media = numeros.reduce((acc, curr) => acc + curr, 0) / numeros.length;
+            const varianza = numeros.reduce((acc, curr) => acc + Math.pow(curr - media, 2), 0) / numeros.length;
+            const desviacion = Math.sqrt(varianza);
+            document.getElementById('resultadoVarianza').innerText = `La varianza es: ${varianza.toFixed(2)}`;
+            document.getElementById('resultadoDesviacion').innerText = `La desviación estándar es: ${desviacion.toFixed(2)}`;
+        }
+
+        function calcularCombinaciones() {
+            const n = parseInt(document.getElementById('nCombinaciones').value);
+            const r = parseInt(document.getElementById('rCombinaciones').value);
+            const combinaciones = factorial(n) / (factorial(r) * factorial(n - r));
+            document.getElementById('resultadoCombinaciones').innerText = `El número de combinaciones es: ${combinaciones}`;
+        }
+    </script>
+</body>
+</html>

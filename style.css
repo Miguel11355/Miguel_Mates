@@ -1,0 +1,158 @@
+p {
+    text-align: center;
+    font-size: 1.2em;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+}
+
+/* Estilos para el contenedor principal */
+.info {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los títulos */
+.info h3 {
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* Estilos para los párrafos */
+.info p {
+    color: #666;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* Estilos para las listas */
+.info ul,
+.info ol {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+/* Estilos para los elementos de lista */
+.info li {
+    color: #666;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.back{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilos para los títulos de sección */
+h2 {
+    font-size: 1.5em;
+    color: #666;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para las etiquetas */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Estilos para los campos de entrada */
+input[type="number"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* Estilos para los botones */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para los resultados */
+p {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+/* Estilos generales */
+@keyframes moveBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 100%;
+    }
+}
+
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #50ac7e;
+    background-image: url('bg.gif'); /* Reemplaza 'tu-fondo.gif' con la ruta a tu GIF */
+    background-repeat: repeat; /* Para repetir el fondo horizontal y verticalmente */
+    background-size: auto; /* Mantén el tamaño original del GIF */
+    background-attachment: fixed; /* Para mantener fijo el fondo mientras se desplaza el contenido */
+    animation: moveBackground 20s linear infinite; /* Aplica la animación al fondo */
+    opacity: .9; /* Ajusta la opacidad del fondo si deseas que esté más al fondo */
+    z-index: -1; /* Asegura que el fondo esté detrás de todo el contenido */
+
+
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+    
+/* Estilos para el contenedor del video */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Proporción 16:9 para el contenedor de video (hace que el contenedor sea responsive) */
+    height: 0;
+    overflow: hidden;
+    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+}
+
+/* Estilos para el iframe del video */
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

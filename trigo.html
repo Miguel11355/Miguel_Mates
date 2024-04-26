@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matemáticas: Operaciones Trigonométricas</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+    body {
+        padding-top: 4rem;
+        background-color: lightgray; /* Color de fondo */
+    }
+    .container {
+        max-width: 960px;
+        margin: auto;
+    }
+    h1 {
+        text-align: center;
+    }
+    .ejercicio {
+        margin-bottom: 2rem;
+    }
+    #resultados,
+    #resultado_operaciones_complejas {
+        margin-top: 2rem;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="back"><h2><a href="index.html">Volver al inicio</a></h2></div>
+    <h1>Matemáticas: Operaciones Trigonométricas</h1>
+
+    <div class="info">
+        <h3>¿Qué es la trigonometría?</h3>
+        <p>La trigonometría es la parte de la matemática que se encarga de estudiar y medir los triángulos, las relaciones entre sus ángulos y lados, y sus funciones trigonométricas de seno, coseno, tangente, cotangente, secante y cosecante. Esta rama matemática se relaciona, directa o indirectamente, con otras áreas científicas, y se aplica a todo aquello que requiera de medidas de precisión, como la geometría espacial y la astronomía para la medición de las distancias entre estrellas respecto a otros puntos geográficos. El estudio de la trigonometría existe desde hace más de tres mil años. En Babilonia y Egipto se tomaban en cuenta las medidas de los ángulos de los triángulos para construir pirámides.</p>
+    </div>
+
+    <div class="info">
+        <h3>¿Cuál es la importancia de la trigonometría?</h3>
+        <p>La aplicación de las funciones trigonométricas en la física, astronomía, telecomunicaciones, náutica, ingeniería, cartografía, entre otros ámbitos, es lo que las dota de relevancia, pues permiten calcular distancias con precisión sin tener que, necesariamente, recorrerlas. Sabiendo esto, la importancia de la trigonometría radica en las diversas aplicaciones que tiene para, por ejemplo:</p>
+        <ul>
+            <li>Calcular la distancia entre dos puntos, de los cuales uno, o incluso ambos, son inaccesibles.</li>
+            <li>Calcular de forma precisa distancias y ángulos de inclinación, siendo de gran utilidad para la ingeniería civil.</li>
+            <li>Calcular la altura de un punto en pie que puede ser, también, inaccesible.</li>
+        </ul>
+    </div>
+
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/tTqDtsrKpCA?si=85r9ZNzMzFLBKHKC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <div class="info">
+        <h3>Entendidos estos tres conceptos fundamentales, las funciones trigonométricas son:</h3>
+        <ul>
+            <li><strong>Seno:</strong> razón que existe entre el cateto opuesto del ángulo de estudio y la hipotenusa.</li>
+            <li><strong>Coseno:</strong> división del cateto adyacente del ángulo analizado entre la hipotenusa del triángulo.</li>
+            <li><strong>Tangente:</strong> razón que existe entre el lado opuesto y el cateto adyacente del triángulo. Se expresa como la división del seno entre el coseno.</li>
+        </ul>
+        <p>Cada función trigonométrica tiene su razón recíproca, es decir:</p>
+        <ul>
+            <li><strong>Secante:</strong> razón recíproca del coseno que consiste en la relación entre la longitud de la hipotenusa y la longitud del cateto adyacente.</li>
+            <li><strong>Cosecante:</strong> razón recíproca del seno que consiste en la relación entre la longitud de la hipotenusa y la longitud del cateto opuesto.</li>
+            <li><strong>Cotangente:</strong> razón recíproca de la tangente que consiste en la relación entre la longitud del cateto adyacente y la del opuesto.</li>
+        </ul>
+    </div>
+
+
+
+    <div class="ejercicio">
+        <h2>Operaciones Básicas</h2>
+        <button id="generar_operaciones">Generar Operaciones Básicas</button>
+        <div id="resultado_operaciones"></div>
+    </div>
+    <div class="ejercicio">
+        <h2>Operaciones Complejas</h2>
+        <button id="generar_operaciones_complejas">Generar Operaciones Complejas</button>
+        <div id="resultado_operaciones_complejas"></div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    function generar_operaciones_basicas() {
+        var angulos = [30, 45, 60, 90, 180, 270, 360]; // Ángulos característicos de la trigonometría
+        return angulos;
+    }
+
+    function generar_operaciones_complejas() {
+        var angulos = [];
+        for (var i = 0; i < 5; i++) {
+            angulos.push(Math.floor(Math.random() * 360)); // Genera ángulos aleatorios entre 0 y 360 grados
+        }
+        return angulos;
+    }
+
+    function calcular_trigonometricas(angulos) {
+        var resultados = [];
+        for (var i = 0; i < angulos.length; i++) {
+            var angulo_rad = angulos[i] * Math.PI / 180; // Convierte el ángulo a radianes
+            var seno = Math.sin(angulo_rad);
+            var coseno = Math.cos(angulo_rad);
+            var tangente = Math.tan(angulo_rad);
+            resultados.push({
+                angulo: angulos[i],
+                seno: seno,
+                coseno: coseno,
+                tangente: tangente
+            });
+        }
+        return resultados;
+    }
+
+    function calcular_operaciones_complejas(angulos) {
+        var resultados = [];
+        for (var i = 0; i < angulos.length; i++) {
+            var angulo_rad = angulos[i] * Math.PI / 180; // Convierte el ángulo a radianes
+            var seno_cuadrado = Math.pow(Math.sin(angulo_rad), 2);
+            var coseno_cuadrado = Math.pow(Math.cos(angulo_rad), 2);
+            var secante = 1 / Math.cos(angulo_rad);
+            var cosecante = 1 / Math.sin(angulo_rad);
+            var cotangente = 1 / Math.tan(angulo_rad);
+            resultados.push({
+                angulo: angulos[i],
+                seno_cuadrado: seno_cuadrado.toFixed(4),
+                coseno_cuadrado: coseno_cuadrado.toFixed(4),
+                secante: secante.toFixed(4),
+                cosecante: cosecante.toFixed(4),
+                cotangente: cotangente.toFixed(4)
+            });
+        }
+        return resultados;
+    }
+
+    function mostrarResultadosTrigonometricos(angulos) {
+        var resultados = calcular_trigonometricas(angulos);
+        var resultadosHTML = "<table class='u-full-width'><thead><tr><th>Ángulo (grados)</th><th>Seno</th><th>Coseno</th><th>Tangente</th></tr></thead><tbody>";
+        for (var i = 0; i < resultados.length; i++) {
+            resultadosHTML += "<tr><td>" + resultados[i].angulo + "</td><td>" + resultados[i].seno.toFixed(4) + "</td><td>" + resultados[i].coseno.toFixed(4) + "</td><td>" + resultados[i].tangente.toFixed(4) + "</td></tr>";
+        }
+        resultadosHTML += "</tbody></table>";
+        $("#resultado_operaciones").html(resultadosHTML);
+    }
+
+    function mostrarResultadosOperacionesComplejas(angulos) {
+        var resultados = calcular_operaciones_complejas(angulos);
+        var resultadosHTML = "<table class='u-full-width'><thead><tr><th>Ángulo (grados)</th><th>Seno^2</th><th>Coseno^2</th><th>Secante</th><th>Cosecante</th><th>Cotangente</th></tr></thead><tbody>";
+        for (var i = 0; i < resultados.length; i++) {
+            resultadosHTML += "<tr><td>" + resultados[i].angulo + "</td><td>" + resultados[i].seno_cuadrado + "</td><td>" + resultados[i].coseno_cuadrado + "</td><td>" + resultados[i].secante + "</td><td>" + resultados[i].cosecante + "</td><td>" + resultados[i].cotangente + "</td></tr>";
+        }
+        resultadosHTML += "</tbody></table>";
+        $("#resultado_operaciones_complejas").html(resultadosHTML);
+    }
+
+    $("#generar_operaciones").click(function() {
+        var angulos = generar_operaciones_basicas();
+        mostrarResultadosTrigonometricos(angulos);
+    });
+
+    $("#generar_operaciones_complejas").click(function() {
+        var angulos = generar_operaciones_complejas();
+        mostrarResultadosOperacionesComplejas(angulos);
+    });
+});
+</script>
+</body>
+</html>

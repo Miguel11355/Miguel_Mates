@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matemáticas: Operaciones con Matrices</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+    body {
+        padding-top: 4rem;
+        background-color: rgb(237, 237, 247); /* Color de fondo */
+        
+    }
+    .container {
+        max-width: 1000px;
+        margin: auto;
+    }
+    h1 {
+        text-align: center;
+       font-weight: bold;
+       border-top-color: transparent; 
+    }
+    .ejercicio {
+        margin-bottom: 5rem;
+        border-style: inset;
+        
+    }
+    #resultados {
+        margin-top: 4rem;
+        
+    }
+</style>
+</head>
+<body>
+    <div class="back"><h2><a href="index.html">Volver al inicio</a></h2></div>
+<div class="container">
+    <h1>Matemáticas: Operaciones con Matrices</h1>
+
+    <div class="info">
+        <h3>¿Qué son las matrices? </h3>
+        <p>Las matrices son un conjunto bidimensional de números o símbolos distribuidos de forma rectangular, en líneas verticales y horizontales, de manera que sus elementos se organizan en filas y columnas. Sirven para describir sistemas de ecuaciones lineales o diferenciales, así como para representar una aplicación lineal. Toda matriz se representa por medio de una letra mayúscula, y sus elementos se reúnen entre dos paréntesis o corchetes. Esta expresión matemática puede sumarse, multiplicarse y descomponerse, por lo que su uso es común en el álgebra lineal. </p>
+    </div>
+
+    <div class="info">
+        <h3>¿Qué conceptos están asociados a las matrices?</h3>
+        <p> Algunos de los conceptos necesarios para completar la definición y el análisis de las matrices son: </p>
+        <ul>
+            <li>Elementos: son los números que conforman la matriz.</li>
+            <li>Dimensión: se trata del resultado del número de filas por el número de columnas. Se designa la m al número de filas y n al número de columnas.  </li>
+            <li>Función: se trata de una regla de correspondencia entre dos conjuntos en el que un elemento del primer conjunto se corresponde, exclusivamente, con un solo elemento el segundo conjunto </li>
+        </ul>
+
+    </div>
+
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/LCJtIGrArC0?si=skTDB_mlBZCfmjoI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+
+    <div class="info">
+        <h3>¿Qué tipos de matrices existen? Una matriz puede ser: </h3>
+        <ol>
+            <li>Rectangular: tiene diferentes números de filas y columnas.</li>
+            <li>Fila: una matriz rectangular, pero con una sola fila.</li>
+            <li>Columna: una matriz rectangular, pero con una sola columna.</li>
+            <li>Nula: matriz cuyos elementos son iguales a cero.</li>
+            <li>Cuadrada de orden n: matriz que tiene el mismo número de filas que de columnas. En este tipo de matrices, la dimensión se llama orden, y su valor coincide con el número de filas y columnas.</li>
+            <li>Diagonal: es un tipo de matriz cuadrada en la que los elementos que no se encuentran en la diagonal principal son iguales a cero.</li>
+            <li>Escalar: es una matriz diagonal en la que todos los elementos presentes en la diagonal principal son iguales.</li>
+            <li>Identidad: se trata de una matriz escalar en la que los elementos de la diagonal principal son iguales a uno, mientras que el resto de los elementos son iguales a cero.</li>
+            <li>Opuesta: es opuesta a otra cuyos elementos tienen un signo contrario a la matriz principal. Es decir, la matriz opuesta a A se denomina -A y todos los elementos del conjunto son contrarios a los elementos de la matriz A.</li>
+            <li>Traspuesta: se trata de la matriz que se obtiene al convertir las filas en columnas. Se utiliza el superíndice t para representarla y su dimensión es n x m.</li>
+        </ol>
+    
+    </div>
+
+    <div class="info">
+        <h3>¿Qué aplicación tienen las matrices? </h3>
+        <p>Las matrices tienen múltiples aplicaciones, sobre todo para representar coeficientes en sistemas de ecuaciones o aplicaciones lineales, pudiendo desempeñar la matriz la misma función que los datos de un vector en un sistema de aplicación lineal. En función a esto, algunas de las aplicaciones pueden ser: </p>
+        <ol>
+            <li>En informática: es uno de los campos en los que más se utilizan las matrices por su eficacia en la manipulación de información. Las matrices son ideales para representaciones gráficas y para la animación de formas.</li>
+            <li>En robótica: se utilizan matrices para programar robots que pueden ejecutar diferentes tareas. Un ejemplo de ello es un brazo biónico que, a través de procesos mecánicos programables, puede cumplir funciones parecidas a las de un brazo humano. Toda esta programación es resultados de cálculo por medio de matrices.</li>
+        </ol>
+    </div>
+
+
+
+    <div class="ejercicio">
+        <h2>Ejercicio Básico</h2>
+        <button id="generar_basico">Generar Ejercicio Básico</button>
+        <div id="resultado_basico"></div>
+    </div>
+    <div class="ejercicio">
+        <h2>Ejercicio Complejo</h2>
+        <button id="generar_complejo">Generar Ejercicio Complejo</button>
+        <div id="resultado_complejo"></div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    function generar_matrices_basico(filas, columnas) {
+        // Limitador para matrices básicas: máximo 3x3
+        filas = Math.min(filas, 3);
+        columnas = Math.min(columnas, 3);
+        
+        // Genera matrices aleatorias con valores entre 1 y 10 para práctica de principiantes
+        var matrices = [];
+        for (var i = 0; i < filas; i++) {
+            var fila = [];
+            for (var j = 0; j < columnas; j++) {
+                fila.push(Math.floor(Math.random() * 10) + 1);
+            }
+            matrices.push(fila);
+        }
+        return matrices;
+    }
+
+    function generar_matrices_complejo(n) {
+        // Genera una matriz cuadrada de tamaño n x n
+        var matrices = [];
+        for (var i = 0; i < n; i++) {
+            var fila = [];
+            for (var j = 0; j < n; j++) {
+                fila.push(Math.floor(Math.random() * 10) + 1);
+            }
+            matrices.push(fila);
+        }
+        return matrices;
+    }
+
+    // Función para calcular el determinante de una matriz cuadrada
+    function determinante(A) {
+        var N = A.length;
+        if (N === 1) {
+            return A[0][0];
+        } else if (N === 2) {
+            return A[0][0] * A[1][1] - A[0][1] * A[1][0];
+        } else {
+            var det = 0;
+            for (var j = 0; j < N; j++) {
+                det += A[0][j] * cofactor(A, 0, j);
+            }
+            return det;
+        }
+    }
+
+    // Función para calcular el cofactor de un elemento de la matriz
+    function cofactor(A, fila, col) {
+        return Math.pow(-1, fila + col) * determinante(submatriz(A, fila, col));
+    }
+
+    // Función para obtener la submatriz eliminando una fila y una columna
+    function submatriz(A, fila, col) {
+        var sub = [];
+        for (var i = 0; i < A.length; i++) {
+            if (i !== fila) {
+                var temp = [];
+                for (var j = 0; j < A.length; j++) {
+                    if (j !== col) {
+                        temp.push(A[i][j]);
+                    }
+                }
+                sub.push(temp);
+            }
+        }
+        return sub;
+    }
+
+    function suma_matrices(A, B) {
+        var resultado = [];
+        for (var i = 0; i < A.length; i++) {
+            var fila = [];
+            for (var j = 0; j < A[0].length; j++) {
+                fila.push(A[i][j] + B[i][j]);
+            }
+            resultado.push(fila);
+        }
+        return resultado;
+    }
+
+    function resta_matrices(A, B) {
+        var resultado = [];
+        for (var i = 0; i < A.length; i++) {
+            var fila = [];
+            for (var j = 0; j < A[0].length; j++) {
+                fila.push(A[i][j] - B[i][j]);
+            }
+            resultado.push(fila);
+        }
+        return resultado;
+    }
+
+    function multiplicacion_matrices(A, B) {
+        var resultado = [];
+        for (var i = 0; i < A.length; i++) {
+            var fila = [];
+            for (var j = 0; j < B[0].length; j++) {
+                var sum = 0;
+                for (var k = 0; k < A[0].length; k++) {
+                    sum += A[i][k] * B[k][j];
+                }
+                fila.push(sum);
+            }
+            resultado.push(fila);
+        }
+        return resultado;
+    }
+
+    function mostrarResultados(A, B, ejercicio) {
+        var suma = suma_matrices(A, B);
+        var resta = resta_matrices(A, B);
+        var multiplicacion = multiplicacion_matrices(A, B);
+        var determinanteA = determinante(A);
+        var determinanteB = determinante(B);
+        var resultadosHTML = "<h3>Matriz A:</h3><pre>" + JSON.stringify(A) + "</pre>";
+        resultadosHTML += "<h3>Matriz B:</h3><pre>" + JSON.stringify(B) + "</pre>";
+        resultadosHTML += "<h3>Suma de matrices:</h3><pre>" + JSON.stringify(suma) + "</pre>";
+        resultadosHTML += "<h3>Resta de matrices:</h3><pre>" + JSON.stringify(resta) + "</pre>";
+        resultadosHTML += "<h3>Multiplicación de matrices:</h3><pre>" + JSON.stringify(multiplicacion) + "</pre>";
+        resultadosHTML += "<h3>Determinante de matriz A:</h3><pre>" + determinanteA + "</pre>";
+        resultadosHTML += "<h3>Determinante de matriz B:</h3><pre>" + determinanteB + "</pre>";
+        if (ejercicio === 'basico') {
+            $("#resultado_basico").html(resultadosHTML);
+        } else {
+            $("#resultado_complejo").html(resultadosHTML);
+        }
+    }
+
+    $("#generar_basico").click(function() {
+        var filas = Math.floor(Math.random() * 3) + 1;
+        var columnas = Math.floor(Math.random() * 3) + 1;
+        var matrizA = generar_matrices_basico(filas, columnas);
+        var matrizB = generar_matrices_basico(filas, columnas);
+        mostrarResultados(matrizA, matrizB, 'basico');
+    });
+
+    $("#generar_complejo").click(function() {
+        var n = Math.floor(Math.random() * 3) + 2; // Tamaño de matriz entre 2 y 4
+        var matrizA = generar_matrices_complejo(n);
+        var matrizB = generar_matrices_complejo(n);
+        mostrarResultados(matrizA, matrizB, 'complejo');
+    });
+});
+</script>
+</body>
+</html>
